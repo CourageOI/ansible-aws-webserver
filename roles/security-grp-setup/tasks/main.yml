@@ -1,0 +1,23 @@
+---
+# tasks file for security-grp-setup
+- name: Include variables from secrets.yml
+  include_vars:
+    file: ../../vars/secrets.yml
+
+- name: Create AWS Security Group
+  amazon.aws.ec2_security_group:
+    name: web-server-sg
+    description: Security group for web server
+    region: "{{ region }}"
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+    rules:
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: "{{ ansible_default_ipv4.address }}/32"
+      - proto: tcp
+        from_port: 80
+        to_port: 80
+        cidr_ip: "{{ cidr80_ip }}"
+    

@@ -1,0 +1,32 @@
+---
+- name: Include variables from secrets.yml
+  include_vars:
+    file: ../../vars/secrets.yml
+
+- name: Launch EC2 Instance
+  amazon.aws.ec2_instance:
+    key_name: "{{ key }}"
+    region: "{{ region }}"
+    instance_type: "{{ instance_type }}"
+    image_id: "{{ image }}"
+    vpc_subnet_id: "{{ subnet_id }}"
+    network:
+        assign_public_ip: true
+    security_group: web-server-sg
+    wait: yes
+    wait_timeout: 300
+    count: 1
+    user_data: "{{ lookup('file', 'webserver_data.sh') }}"
+    tags:
+      EnvName: "Test Environment"
+    aws_access_key: "{{ aws_access_key }}"
+    aws_secret_key: "{{ aws_secret_key }}"
+  register: ec2_instance
+
+- name: Set public IP as a fact
+  set_fact:
+    instance_public_ip: "{{ ec2_instance.instances[0].network_interfaces[0].association.public_ip }}"
+
+- name: Print server IP
+  debug:
+    msg: "Server IP: {{ instance_public_ip }}"

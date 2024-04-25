@@ -1,0 +1,6 @@
+---
+# vars file for security-grp-setup
+
+subnet_id: "subnet-0ebc3e50c0bd12798"
+region: "eu-west-2"
+cidr80_ip: "0.0.0.0/0"

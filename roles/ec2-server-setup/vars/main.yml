@@ -1,0 +1,7 @@
+---
+# vars file for ec2-server-setup
+image: "ami-019a292cfb114a776"
+instance_type: "t2.micro"
+subnet_id: "subnet-0ebc3e50c0bd12798"
+region: "eu-west-2"
+key: "ansible-test"

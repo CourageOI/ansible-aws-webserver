@@ -1,0 +1,8 @@
+---
+- name: Provision AWS resources and deploy web server
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+  roles:
+    - security-grp-setup
+    - ec2-server-setup
