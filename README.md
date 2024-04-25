@@ -32,7 +32,7 @@ You can check out ansible website to see how to install setup the Ansible
 ## Configuration
 in the role/vars dirctory there is where you specify the access key and secret for your aws account. it is a secret which you encrypt using ansible-vault. 
 Use this command to create encrypt the data as below:
-```ansible-vault encrypt ec2-server-setup/vars/secrets.yml``
+```ansible-vault encrypt ec2-server-setup/vars/secrets.yml```
 
 
 ## Usage
