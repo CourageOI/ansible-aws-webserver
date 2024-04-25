@@ -22,9 +22,10 @@ Before you begin, ensure you have the following:
 ## Installation
 To use the playbooks in this repository, follow these steps:
 1. Clone the repository:
+   
 ```git clone https://github.com/CourageOI/ansible-aws-webserver.git cd ansible-aws-webserver```
 
-2. Install required Ansible:
+3. Install required Ansible:
 To run the ansible make sure you install, python, pip, boto3, ansible.
 when you install ansible it automatically installs the various collections and modules
 
@@ -32,6 +33,7 @@ You can check out ansible website to see how to install setup the Ansible
 ## Configuration
 in the role/vars dirctory there is where you specify the access key and secret for your aws account. it is a secret which you encrypt using ansible-vault. 
 Use this command to create encrypt the data as below:
+
 ```ansible-vault encrypt ec2-server-setup/vars/secrets.yml```
 
 
