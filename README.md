@@ -1,6 +1,6 @@
 # AWS with Ansible
 
-## Introduction
+## Introduction/Fucntion
 This repository contains Ansible playbooks and scripts designed to configure and manage AWS services. The goal is to automate the provisioning and management of AWS resources using Ansible, an open-source automation tool.
 
 The configuration contains ansible roles and play book to provision an AWS linux ec2 instance, install Apache httpd webserver and configure the webserver to display certain content in the webpage. 
