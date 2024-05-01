@@ -3,6 +3,8 @@
   hosts: localhost
   connection: local
   gather_facts: yes
+  vars:
+    desired_state: absent
   roles:
     - security-grp-setup
     - ec2-server-setup

@@ -5,6 +5,8 @@
 
 - name: Launch EC2 Instance
   amazon.aws.ec2_instance:
+    state: "{{ desired_state }}"
+    name: ec2-webserver
     key_name: "{{ key }}"
     region: "{{ region }}"
     instance_type: "{{ instance_type }}"
@@ -15,7 +17,7 @@
     security_group: web-server-sg
     wait: yes
     wait_timeout: 300
-    count: 1
+    exact_count: 1
     user_data: "{{ lookup('file', 'webserver_data.sh') }}"
     tags:
       EnvName: "Test Environment"
@@ -26,7 +28,9 @@
 - name: Set public IP as a fact
   set_fact:
     instance_public_ip: "{{ ec2_instance.instances[0].network_interfaces[0].association.public_ip }}"
+  when: desired_state == 'present'
 
 - name: Print server IP
   debug:
     msg: "Server IP: {{ instance_public_ip }}"
+  when: desired_state == 'present'

@@ -6,6 +6,7 @@
 
 - name: Create AWS Security Group
   amazon.aws.ec2_security_group:
+    state: "{{ desired_state }}"
     name: web-server-sg
     description: Security group for web server
     region: "{{ region }}"
