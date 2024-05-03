@@ -42,6 +42,8 @@ To run an Ansible playbook, use the following command:
 
 ```ansible-playbook playbook.yml --ask-vault-pass```
 
+## Delete Resources
+change the ```disired_state``` variable in the playbook.yml file to ```absent``` and ensure the security group role gets deleted last since it's a dependency for ec2 instance setup role. 
 
 
 

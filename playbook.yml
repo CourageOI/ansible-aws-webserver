@@ -6,5 +6,5 @@
   vars:
     desired_state: absent
   roles:
-    - security-grp-setup
     - ec2-server-setup
+    - security-grp-setup
